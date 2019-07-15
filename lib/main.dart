@@ -2,10 +2,12 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
+import 'package:file_picker/file_picker.dart';
 
 import './pageview.dart';
 import './custom_color.dart';
 import './camera.dart';
+import './file_manager.dart';
 
 void main() => runApp(MyApp());
 
@@ -31,6 +33,7 @@ class MyApp extends StatelessWidget {
       routes: <String, WidgetBuilder> {
         '/pageview': (BuildContext context) => PageViewApp(),
         '/custom_color': (BuildContext context) => CustomColorApp(),
+        '/file_manager': (BuildContext context) => FileManagerScreen(),
       },
     );
   }
@@ -109,6 +112,9 @@ class _MyHomePageState extends State<MyHomePage> {
               Navigator.of(context).pushNamed('/custom_color');
             }, child: Text('Custom Color'),),
             RaisedButton(onPressed: openCamera, child: Text('Camera'),),
+            RaisedButton(onPressed: () {
+              Navigator.of(context).pushNamed('/file_manager');
+            }, child: Text('File Manager'),),
           ],
         ),
       ),
@@ -125,5 +131,10 @@ class _MyHomePageState extends State<MyHomePage> {
     final camera = cameras.first;
     
     Navigator.push(context, MaterialPageRoute(builder: (context) => CameraApp(camera)));
+  }
+
+  Future<void> openFileManager() async {
+    String filePath = await FilePicker.getFilePath(type: FileType.IMAGE);
+    print("filePath $filePath");
   }
 }

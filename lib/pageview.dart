@@ -63,7 +63,7 @@ class _PageViewScreenState extends State {
 
   void onTabTapped(int index) {
     pageController.animateToPage(index,
-        duration: Duration(milliseconds: 400), curve: Curves.easeOutQuad);
+        duration: Duration(milliseconds: 400), curve: Curves.easeIn);
     setState(() {
       _currentPage = index;
     });
