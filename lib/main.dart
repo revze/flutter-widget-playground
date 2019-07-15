@@ -1,7 +1,11 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:camera/camera.dart';
 
 import './pageview.dart';
 import './custom_color.dart';
+import './camera.dart';
 
 void main() => runApp(MyApp());
 
@@ -26,7 +30,7 @@ class MyApp extends StatelessWidget {
       home: MyHomePage(title: 'Flutter Widget Playground'),
       routes: <String, WidgetBuilder> {
         '/pageview': (BuildContext context) => PageViewApp(),
-        '/custom_color': (BuildContext context) => CustomColorApp()
+        '/custom_color': (BuildContext context) => CustomColorApp(),
       },
     );
   }
@@ -103,7 +107,8 @@ class _MyHomePageState extends State<MyHomePage> {
             }, child: Text('PageView'),),
             RaisedButton(onPressed: () {
               Navigator.of(context).pushNamed('/custom_color');
-            }, child: Text('Custom Color'),)
+            }, child: Text('Custom Color'),),
+            RaisedButton(onPressed: openCamera, child: Text('Camera'),),
           ],
         ),
       ),
@@ -113,5 +118,12 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
+  }
+
+  Future<void> openCamera() async {
+    final cameras = await availableCameras();
+    final camera = cameras.first;
+    
+    Navigator.push(context, MaterialPageRoute(builder: (context) => CameraApp(camera)));
   }
 }
