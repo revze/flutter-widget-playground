@@ -8,4 +8,5 @@ class NewColors {
   static const Color red = Color(0xFFD95350);
   static const Color mediumTurqoise = Color(0xFF4ecdc4);
   static const Color cabaret = Color(0xFFd2527f);
+  static const Color gainsboro = Color(0xFFdfe4ea);
 }

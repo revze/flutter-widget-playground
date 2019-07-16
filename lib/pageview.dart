@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 
+import './helper/new_colors.dart';
+
 class PageViewApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(primarySwatch: Colors.blue),
       home: PageViewScreen(),
     );
@@ -35,14 +38,14 @@ class _PageViewScreenState extends State {
         controller: pageController,
         children: <Widget>[
           Container(
-            color: Colors.grey,
+            color: NewColors.gainsboro,
             child: ListWidget(10),
           ),
           Container(
             color: Colors.cyan,
           ),
           Container(
-            color: Colors.grey,
+            color: NewColors.gainsboro,
             child: ListWidget(3),
           )
         ],
@@ -88,35 +91,48 @@ class ListWidget extends StatelessWidget {
         itemCount: _itemCount,
         itemBuilder: (BuildContext context, int index) {
           return Container(
-              color: Colors.white,
-              padding: EdgeInsets.all(10.0),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Container(
-                    width: 60,
-                    height: 60,
-                    margin: EdgeInsets.only(right: 15),
-                    decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        image: DecorationImage(
-                            fit: BoxFit.fill,
-                            image: NetworkImage(
-                                "https://picsum.photos/id/400/600"))),
-                  ),
-                  Flexible(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          Padding(padding: EdgeInsets.only(bottom: 10), child: Text('Revando', style: TextStyle(fontSize: 14),)),
-                          Text(
-                              'Lorem Ipsum Dolor Sit Amet Lorem Ipsum Dolor Sit Amet Lorem Ipsum Dolor Sit Amet',
-                              style:
-                                  TextStyle(fontSize: 12, color: Colors.grey)),
-                        ],
-                      ))
-                ],
-              ));
+              margin: EdgeInsets.only(bottom: 1),
+              child: Material(
+                  color: Colors.white,
+                  child: InkWell(
+                      onTap: () {
+                        print('Hello world');
+                      },
+                      splashColor: NewColors.red,
+                      child: Container(
+                          padding: EdgeInsets.all(10.0),
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              Container(
+                                width: 60,
+                                height: 60,
+                                margin: EdgeInsets.only(right: 15),
+                                decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    image: DecorationImage(
+                                        fit: BoxFit.fill,
+                                        image: NetworkImage(
+                                            "https://picsum.photos/id/400/600"))),
+                              ),
+                              Flexible(
+                                  child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: <Widget>[
+                                  Container(
+                                      margin: EdgeInsets.only(bottom: 10),
+                                      child: Text(
+                                        'Revando',
+                                        style: TextStyle(fontSize: 14),
+                                      )),
+                                  Text(
+                                      'Lorem Ipsum Dolor Sit Amet Lorem Ipsum Dolor Sit Amet Lorem Ipsum Dolor Sit Amet',
+                                      style: TextStyle(
+                                          fontSize: 12, color: Colors.grey)),
+                                ],
+                              ))
+                            ],
+                          )))));
         });
   }
 }

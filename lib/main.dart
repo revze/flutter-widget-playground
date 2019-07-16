@@ -8,6 +8,8 @@ import './pageview.dart';
 import './custom_color.dart';
 import './camera.dart';
 import './file_manager.dart';
+import './image_asset.dart';
+import './custom_font.dart';
 
 void main() => runApp(MyApp());
 
@@ -34,6 +36,8 @@ class MyApp extends StatelessWidget {
         '/pageview': (BuildContext context) => PageViewApp(),
         '/custom_color': (BuildContext context) => CustomColorApp(),
         '/file_manager': (BuildContext context) => FileManagerScreen(),
+        '/image_asset': (BuildContext context) => ImageAssetApp(),
+        '/custom_font': (BuildContext context) => CustomFontApp()
       },
     );
   }
@@ -115,6 +119,12 @@ class _MyHomePageState extends State<MyHomePage> {
             RaisedButton(onPressed: () {
               Navigator.of(context).pushNamed('/file_manager');
             }, child: Text('File Manager'),),
+            RaisedButton(onPressed: () {
+              Navigator.of(context).pushNamed('/image_asset');
+            }, child: Text('Image Asset'),),
+            RaisedButton(onPressed: () {
+              Navigator.of(context).pushNamed('/custom_font');
+            }, child: Text('Custom Font'),),
           ],
         ),
       ),
