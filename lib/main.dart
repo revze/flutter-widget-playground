@@ -10,6 +10,7 @@ import './camera.dart';
 import './file_manager.dart';
 import './image_asset.dart';
 import './custom_font.dart';
+import './carousel_slider.dart';
 
 void main() => runApp(MyApp());
 
@@ -37,7 +38,8 @@ class MyApp extends StatelessWidget {
         '/custom_color': (BuildContext context) => CustomColorApp(),
         '/file_manager': (BuildContext context) => FileManagerScreen(),
         '/image_asset': (BuildContext context) => ImageAssetApp(),
-        '/custom_font': (BuildContext context) => CustomFontApp()
+        '/custom_font': (BuildContext context) => CustomFontApp(),
+        '/carousel_slider': (BuildContext context) => CarouselSliderApp()
       },
     );
   }
@@ -125,6 +127,9 @@ class _MyHomePageState extends State<MyHomePage> {
             RaisedButton(onPressed: () {
               Navigator.of(context).pushNamed('/custom_font');
             }, child: Text('Custom Font'),),
+            RaisedButton(onPressed: () {
+              Navigator.of(context).pushNamed('/carousel_slider');
+            }, child: Text('Carousel Slider'),),
           ],
         ),
       ),

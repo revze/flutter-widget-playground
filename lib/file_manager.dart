@@ -72,7 +72,7 @@ class _FileManagerScreenState extends State {
                 builder: (context, snapshot) {
                   if (snapshot.connectionState == ConnectionState.done) {
                     if (_filePath != null) {
-                      return Text('File name: $_filePath');
+                      return Text('file name: $_filePath');
                     } else {
                       return Container();
                     }
