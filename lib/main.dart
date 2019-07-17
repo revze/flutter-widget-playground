@@ -12,6 +12,7 @@ import './image_asset.dart';
 import './custom_font.dart';
 import './carousel_slider.dart';
 import './infinity_scroll_listview.dart';
+import './infintiy_scroll_gridview.dart';
 
 void main() => runApp(MyApp());
 
@@ -41,7 +42,8 @@ class MyApp extends StatelessWidget {
         '/image_asset': (BuildContext context) => ImageAssetApp(),
         '/custom_font': (BuildContext context) => CustomFontApp(),
         '/carousel_slider': (BuildContext context) => CarouselSliderApp(),
-        '/infinity_scroll_listview': (BuildContext context) => InfinityScrollListViewScreen()
+        '/infinity_scroll_listview': (BuildContext context) => InfinityScrollListViewScreen(),
+        '/infinity_scroll_gridview': (BuildContext context) => InfinityScrollGridViewScreen()
       },
     );
   }
@@ -135,6 +137,9 @@ class _MyHomePageState extends State<MyHomePage> {
             RaisedButton(onPressed: () {
               Navigator.of(context).pushNamed('/infinity_scroll_listview');
             }, child: Text('Infinity ListView Scroll'),),
+            RaisedButton(onPressed: () {
+              Navigator.of(context).pushNamed('/infinity_scroll_gridview');
+            }, child: Text('Infinity GridView Scroll'),),
           ],
         ),
       ),
