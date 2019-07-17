@@ -11,6 +11,7 @@ import './file_manager.dart';
 import './image_asset.dart';
 import './custom_font.dart';
 import './carousel_slider.dart';
+import './infinity_scroll_listview.dart';
 
 void main() => runApp(MyApp());
 
@@ -39,7 +40,8 @@ class MyApp extends StatelessWidget {
         '/file_manager': (BuildContext context) => FileManagerScreen(),
         '/image_asset': (BuildContext context) => ImageAssetApp(),
         '/custom_font': (BuildContext context) => CustomFontApp(),
-        '/carousel_slider': (BuildContext context) => CarouselSliderApp()
+        '/carousel_slider': (BuildContext context) => CarouselSliderApp(),
+        '/infinity_scroll_listview': (BuildContext context) => InfinityScrollListViewScreen()
       },
     );
   }
@@ -130,6 +132,9 @@ class _MyHomePageState extends State<MyHomePage> {
             RaisedButton(onPressed: () {
               Navigator.of(context).pushNamed('/carousel_slider');
             }, child: Text('Carousel Slider'),),
+            RaisedButton(onPressed: () {
+              Navigator.of(context).pushNamed('/infinity_scroll_listview');
+            }, child: Text('Infinity ListView Scroll'),),
           ],
         ),
       ),
