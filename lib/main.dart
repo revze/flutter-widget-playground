@@ -13,6 +13,7 @@ import './custom_font.dart';
 import './carousel_slider.dart';
 import './infinity_scroll_listview.dart';
 import './infintiy_scroll_gridview.dart';
+import './permission.dart';
 
 void main() => runApp(MyApp());
 
@@ -35,15 +36,18 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: MyHomePage(title: 'Flutter Widget Playground'),
-      routes: <String, WidgetBuilder> {
+      routes: <String, WidgetBuilder>{
         '/pageview': (BuildContext context) => PageViewApp(),
         '/custom_color': (BuildContext context) => CustomColorApp(),
         '/file_manager': (BuildContext context) => FileManagerScreen(),
         '/image_asset': (BuildContext context) => ImageAssetApp(),
         '/custom_font': (BuildContext context) => CustomFontApp(),
         '/carousel_slider': (BuildContext context) => CarouselSliderApp(),
-        '/infinity_scroll_listview': (BuildContext context) => InfinityScrollListViewScreen(),
-        '/infinity_scroll_gridview': (BuildContext context) => InfinityScrollGridViewScreen()
+        '/infinity_scroll_listview': (BuildContext context) =>
+            InfinityScrollListViewScreen(),
+        '/infinity_scroll_gridview': (BuildContext context) =>
+            InfinityScrollGridViewScreen(),
+        '/permission': (BuildContext context) => PermissionScreen()
       },
     );
   }
@@ -115,31 +119,64 @@ class _MyHomePageState extends State<MyHomePage> {
           // horizontal).
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            RaisedButton(onPressed: () {
-              Navigator.of(context).pushNamed('/pageview');
-            }, child: Text('PageView'),),
-            RaisedButton(onPressed: () {
-              Navigator.of(context).pushNamed('/custom_color');
-            }, child: Text('Custom Color'),),
-            RaisedButton(onPressed: openCamera, child: Text('Camera'),),
-            RaisedButton(onPressed: () {
-              Navigator.of(context).pushNamed('/file_manager');
-            }, child: Text('File Manager'),),
-            RaisedButton(onPressed: () {
-              Navigator.of(context).pushNamed('/image_asset');
-            }, child: Text('Image Asset'),),
-            RaisedButton(onPressed: () {
-              Navigator.of(context).pushNamed('/custom_font');
-            }, child: Text('Custom Font'),),
-            RaisedButton(onPressed: () {
-              Navigator.of(context).pushNamed('/carousel_slider');
-            }, child: Text('Carousel Slider'),),
-            RaisedButton(onPressed: () {
-              Navigator.of(context).pushNamed('/infinity_scroll_listview');
-            }, child: Text('Infinity ListView Scroll'),),
-            RaisedButton(onPressed: () {
-              Navigator.of(context).pushNamed('/infinity_scroll_gridview');
-            }, child: Text('Infinity GridView Scroll'),),
+            RaisedButton(
+              onPressed: () {
+                Navigator.of(context).pushNamed('/pageview');
+              },
+              child: Text('PageView'),
+            ),
+            RaisedButton(
+              onPressed: () {
+                Navigator.of(context).pushNamed('/custom_color');
+              },
+              child: Text('Custom Color'),
+            ),
+            RaisedButton(
+              onPressed: openCamera,
+              child: Text('Camera'),
+            ),
+            RaisedButton(
+              onPressed: () {
+                Navigator.of(context).pushNamed('/file_manager');
+              },
+              child: Text('File Manager'),
+            ),
+            RaisedButton(
+              onPressed: () {
+                Navigator.of(context).pushNamed('/image_asset');
+              },
+              child: Text('Image Asset'),
+            ),
+            RaisedButton(
+              onPressed: () {
+                Navigator.of(context).pushNamed('/custom_font');
+              },
+              child: Text('Custom Font'),
+            ),
+            RaisedButton(
+              onPressed: () {
+                Navigator.of(context).pushNamed('/carousel_slider');
+              },
+              child: Text('Carousel Slider'),
+            ),
+            RaisedButton(
+              onPressed: () {
+                Navigator.of(context).pushNamed('/infinity_scroll_listview');
+              },
+              child: Text('Infinity ListView Scroll'),
+            ),
+            RaisedButton(
+              onPressed: () {
+                Navigator.of(context).pushNamed('/infinity_scroll_gridview');
+              },
+              child: Text('Infinity GridView Scroll'),
+            ),
+            RaisedButton(
+              onPressed: () {
+                Navigator.of(context).pushNamed('/permission');
+              },
+              child: Text('Permission'),
+            ),
           ],
         ),
       ),
@@ -154,8 +191,9 @@ class _MyHomePageState extends State<MyHomePage> {
   Future<void> openCamera() async {
     final cameras = await availableCameras();
     final camera = cameras.first;
-    
-    Navigator.push(context, MaterialPageRoute(builder: (context) => CameraApp(camera)));
+
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => CameraApp(camera)));
   }
 
   Future<void> openFileManager() async {
