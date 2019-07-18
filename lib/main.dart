@@ -16,6 +16,7 @@ import './pageview.dart';
 import './permission.dart';
 import './staggered_gridview.dart';
 import './web_view.dart';
+import './request_api_list.dart';
 
 void main() => runApp(MyApp());
 
@@ -51,7 +52,8 @@ class MyApp extends StatelessWidget {
             InfinityScrollGridViewScreen(),
         '/permission': (BuildContext context) => PermissionScreen(),
         '/web_view': (BuildContext context) => WebViewScreen(),
-        '/staggered_gridview': (BuildContext context) => StaggeredGridViewScreen()
+        '/staggered_gridview': (BuildContext context) => StaggeredGridViewScreen(),
+        '/request_api_list': (BuildContext context) => RequestApiListScreen()
       },
     );
   }
@@ -193,6 +195,12 @@ class _MyHomePageState extends State<MyHomePage> {
               Navigator.of(context).pushNamed('/staggered_gridview');
             },
             child: Text('Staggered GridView'),
+          ),
+          RaisedButton(
+            onPressed: () {
+              Navigator.of(context).pushNamed('/request_api_list');
+            },
+            child: Text('Request API List'),
           )
         ],
       ))),
