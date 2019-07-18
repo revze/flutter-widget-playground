@@ -14,6 +14,7 @@ import './infinity_scroll_listview.dart';
 import './infintiy_scroll_gridview.dart';
 import './pageview.dart';
 import './permission.dart';
+import './staggered_gridview.dart';
 import './web_view.dart';
 
 void main() => runApp(MyApp());
@@ -49,7 +50,8 @@ class MyApp extends StatelessWidget {
         '/infinity_scroll_gridview': (BuildContext context) =>
             InfinityScrollGridViewScreen(),
         '/permission': (BuildContext context) => PermissionScreen(),
-        '/web_view': (BuildContext context) => WebViewScreen()
+        '/web_view': (BuildContext context) => WebViewScreen(),
+        '/staggered_gridview': (BuildContext context) => StaggeredGridViewScreen()
       },
     );
   }
@@ -186,6 +188,12 @@ class _MyHomePageState extends State<MyHomePage> {
             },
             child: Text('WebView'),
           ),
+          RaisedButton(
+            onPressed: () {
+              Navigator.of(context).pushNamed('/staggered_gridview');
+            },
+            child: Text('Staggered GridView'),
+          )
         ],
       ))),
       floatingActionButton: FloatingActionButton(

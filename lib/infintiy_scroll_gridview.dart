@@ -28,6 +28,11 @@ class _InfinityScrollGridViewState extends State {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
+    var itemHeight = 1.25;
+//    var itemHeight = MediaQuery.of(context).size.width / (MediaQuery.of(context).size.height / 2);
+
+    print("itemHeight $itemHeight");
+
     return Scaffold(
       appBar: AppBar(
         title: Text('Infinity Scroll GridView'),
@@ -44,7 +49,7 @@ class _InfinityScrollGridViewState extends State {
                 ? items.length + 1
                 : items.length,
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2, childAspectRatio: 1, crossAxisSpacing: 10, mainAxisSpacing: 10),
+                crossAxisCount: 2, crossAxisSpacing: 10, mainAxisSpacing: 10),
 //            scrollDirection: Axis.horizontal,
             itemBuilder: (BuildContext context, int index) {
               var text = (index % 2 == 0)
@@ -64,17 +69,25 @@ class _InfinityScrollGridViewState extends State {
                   ),
                 );
               } else {
-                return Card(
+                return Container(
                     child: Column(
                       children: <Widget>[
-                        Image.network("https://picsum.photos/700/500"),
+                        Image.network(
+                          "https://picsum.photos/id/26/700/500",
+                          height: 100,
+                          fit: BoxFit.cover,
+                          width: double.infinity,
+                        ),
                         Container(
+//                          margin: EdgeInsets.only(bottom: 100),
                           padding: EdgeInsets.all(10),
-                          child: Text(text, overflow: TextOverflow.ellipsis,),
+                          child: Text(
+                            text,
+                            overflow: TextOverflow.ellipsis,
+                          ),
                         )
                       ],
-                    ),
-                    margin: EdgeInsets.all(0));
+                    ));
               }
             },
           )),

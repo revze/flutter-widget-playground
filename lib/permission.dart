@@ -51,6 +51,7 @@ class _PermissionState extends State {
 
     if (permissionStatus.value == 2) {
       print("Permission granted");
+      showPermissionGrantedDialog();
     }
     else if (permissionStatus.value == 0) {
       bool isShown = await PermissionHandler().shouldShowRequestPermissionRationale(PermissionGroup.camera);
@@ -72,6 +73,7 @@ class _PermissionState extends State {
 
     if (permissionStatus.value == 2) {
       print('Permission granted');
+      showPermissionGrantedDialog();;;
     } else if (permissionStatus.value == 0) {
       bool isShown = await PermissionHandler().shouldShowRequestPermissionRationale(PermissionGroup.storage);
       print('should show request permission rationale $isShown');
@@ -132,5 +134,28 @@ class _PermissionState extends State {
 
   void openAppSettings() async {
     await PermissionHandler().openAppSettings();
+  }
+
+  void showPermissionGrantedDialog() {
+    showDialog(context: context, builder: (BuildContext context) {
+      return AlertDialog(
+        title: Text('Success'),
+        content: Container(
+          child: Column(children: <Widget>[
+            Container(margin: EdgeInsets.only(bottom: 15), child: Text('Permission granted')),
+            Container(
+              height: 100,
+              child: Image.network('https://picsum.photos/400/300', fit: BoxFit.cover,),
+            )
+          ],),
+          height: 150,
+        ),
+        actions: <Widget>[
+          FlatButton(onPressed: () {
+            Navigator.of(context).pop();
+          }, child: Text('Close'))
+        ],
+      );
+    });
   }
 }
