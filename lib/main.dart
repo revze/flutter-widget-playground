@@ -17,6 +17,7 @@ import './permission.dart';
 import './staggered_gridview.dart';
 import './web_view.dart';
 import './request_api_list.dart';
+import './location_checker.dart';
 
 void main() => runApp(MyApp());
 
@@ -53,7 +54,8 @@ class MyApp extends StatelessWidget {
         '/permission': (BuildContext context) => PermissionScreen(),
         '/web_view': (BuildContext context) => WebViewScreen(),
         '/staggered_gridview': (BuildContext context) => StaggeredGridViewScreen(),
-        '/request_api_list': (BuildContext context) => RequestApiListScreen()
+        '/request_api_list': (BuildContext context) => RequestApiListScreen(),
+        '/location_checker': (BuildContext context) => LocationCheckerScreen()
       },
     );
   }
@@ -201,6 +203,12 @@ class _MyHomePageState extends State<MyHomePage> {
               Navigator.of(context).pushNamed('/request_api_list');
             },
             child: Text('Request API List'),
+          ),
+          RaisedButton(
+            onPressed: () {
+              Navigator.of(context).pushNamed('/location_checker');
+            },
+            child: Text('Location Checker'),
           )
         ],
       ))),

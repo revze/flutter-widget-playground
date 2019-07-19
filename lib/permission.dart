@@ -73,7 +73,7 @@ class _PermissionState extends State {
 
     if (permissionStatus.value == 2) {
       print('Permission granted');
-      showPermissionGrantedDialog();;;
+      showPermissionGrantedDialog();
     } else if (permissionStatus.value == 0) {
       bool isShown = await PermissionHandler().shouldShowRequestPermissionRationale(PermissionGroup.storage);
       print('should show request permission rationale $isShown');
