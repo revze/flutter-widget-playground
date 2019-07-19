@@ -12,12 +12,13 @@ import './file_manager.dart';
 import './image_asset.dart';
 import './infinity_scroll_listview.dart';
 import './infintiy_scroll_gridview.dart';
+import './location_checker.dart';
 import './pageview.dart';
 import './permission.dart';
+import './request_api_list.dart';
 import './staggered_gridview.dart';
 import './web_view.dart';
-import './request_api_list.dart';
-import './location_checker.dart';
+import './google_maps.dart';
 
 void main() => runApp(MyApp());
 
@@ -53,9 +54,11 @@ class MyApp extends StatelessWidget {
             InfinityScrollGridViewScreen(),
         '/permission': (BuildContext context) => PermissionScreen(),
         '/web_view': (BuildContext context) => WebViewScreen(),
-        '/staggered_gridview': (BuildContext context) => StaggeredGridViewScreen(),
+        '/staggered_gridview': (BuildContext context) =>
+            StaggeredGridViewScreen(),
         '/request_api_list': (BuildContext context) => RequestApiListScreen(),
-        '/location_checker': (BuildContext context) => LocationCheckerScreen()
+        '/location_checker': (BuildContext context) => LocationCheckerScreen(),
+        '/google_maps': (BuildContext context) => GoogleMapsScreen()
       },
     );
   }
@@ -209,7 +212,15 @@ class _MyHomePageState extends State<MyHomePage> {
               Navigator.of(context).pushNamed('/location_checker');
             },
             child: Text('Location Checker'),
-          )
+          ),
+          Container(
+              margin: EdgeInsets.only(bottom: 20),
+              child: RaisedButton(
+                onPressed: () {
+                  Navigator.of(context).pushNamed('/google_maps');
+                },
+                child: Text('Google Maps'),
+              ))
         ],
       ))),
       floatingActionButton: FloatingActionButton(
